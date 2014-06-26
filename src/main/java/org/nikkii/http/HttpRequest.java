@@ -96,6 +96,15 @@ public abstract class HttpRequest implements AutoCloseable {
 	}
 
 	/**
+	 * Gets the HTTP response as an InputStream
+	 * @return The response stream
+	 */
+	public InputStream getResponseStream() throws IOException {
+		checkConnection();
+		return connection.getInputStream();
+	}
+
+	/**
 	 * Get the HTTP response body as a string.
 	 * This will execute the request if it hasn't already.
 	 * TODO: Do we want to make sure there's no ending \n?
