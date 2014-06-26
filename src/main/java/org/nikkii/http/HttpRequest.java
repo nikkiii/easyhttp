@@ -127,6 +127,16 @@ public abstract class HttpRequest implements AutoCloseable {
 	}
 
 	/**
+	 * Gets a header from the response
+	 * @param name The request header name
+	 * @return The request header
+	 */
+	public String getResponseHeader(String name) throws IOException {
+		checkConnection();
+		return connection.getHeaderField(name);
+	}
+
+	/**
 	 * Checks if the connection has been initialized, and if not initialize and execute the request.
 	 * @throws IOException If an error occurred while executing the request
 	 */
